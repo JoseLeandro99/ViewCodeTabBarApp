@@ -1,8 +1,8 @@
-//
-//  ColorStyles.swift
-//  TabBarApp
-//
-//  Created by Leandro on 19/07/22.
-//
+import UIKit
 
-import Foundation
+class ColorStyles {
+    static let primaryText: UIColor = .white
+    static let secondaryText: UIColor = .darkGray
+    static let primaryBackground: UIColor = .systemTeal
+    static let secondaryBackground: UIColor = .white
+}

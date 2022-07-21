@@ -1,8 +1,14 @@
-//
-//  UserViewController.swift
-//  TabBarApp
-//
-//  Created by Leandro on 19/07/22.
-//
+import UIKit
 
-import Foundation
+class UserViewController: UIViewController {
+    var screen: UserView?
+    
+    override func loadView() {
+        self.screen = UserView()
+        self.view = self.screen
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}

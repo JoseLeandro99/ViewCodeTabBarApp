@@ -1,8 +1,14 @@
-//
-//  SettingsViewController.swift
-//  TabBarApp
-//
-//  Created by Leandro on 19/07/22.
-//
+import UIKit
 
-import Foundation
+class SettingsViewController: UIViewController {
+    var screen: SettingsView?
+    
+    override func loadView() {
+        self.screen = SettingsView()
+        self.view = self.screen
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
