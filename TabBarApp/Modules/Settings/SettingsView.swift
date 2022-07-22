@@ -1,6 +1,8 @@
 import UIKit
 
 class SettingsView: UIView {
+    private var delegate: SettingsViewProtocol?
+    
     private lazy var iconImage = AppImageView(
         name: "gear",
         tintColor: ColorStyles.primaryText)
@@ -13,6 +15,7 @@ class SettingsView: UIView {
     private lazy var logoutButton: UIButton = {
         let button = AppButton(title: "Logout Account")
         button.backgroundColor = .systemPink
+        button.addTarget(self, action: #selector(self.tappedLogoutButton), for: .touchUpInside)
         return button
     }()
     
@@ -23,6 +26,10 @@ class SettingsView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configDelegate(delegate: SettingsViewProtocol) {
+        self.delegate = delegate
     }
     
     private func setupSettingsView() {
@@ -58,5 +65,9 @@ class SettingsView: UIView {
             self.logoutButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -10.0),
             self.logoutButton.heightAnchor.constraint(equalToConstant: 50.0)
         ])
+    }
+    
+    @objc private func tappedLogoutButton() {
+        self.delegate?.alertAction()
     }
 }

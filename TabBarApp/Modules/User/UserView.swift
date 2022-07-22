@@ -1,6 +1,8 @@
 import UIKit
 
 class UserView: UIView {
+    private var delegate: UserViewProtocol?
+    
     private lazy var titleLabel = AppLabel(
         "User",
         color: ColorStyles.primaryText,
@@ -22,7 +24,11 @@ class UserView: UIView {
     
     private lazy var usernameInput = AppTextField()
     private lazy var emailInput = AppTextField()
-    private lazy var saveButton = AppButton(title: "Update Profile")
+    private lazy var saveButton: AppButton = {
+        let button = AppButton(title: "Update Profile")
+        button.addTarget(self, action: #selector(self.tappedSaveButton), for: .touchUpInside)
+        return button
+    }()
     
     
     override init(frame: CGRect) {
@@ -33,6 +39,10 @@ class UserView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configDelegate(delegate: UserViewProtocol) {
+        self.delegate = delegate
     }
     
     private func mockUserData() {
@@ -104,5 +114,9 @@ class UserView: UIView {
             self.saveButton.trailingAnchor.constraint(equalTo: self.usernameInput.trailingAnchor),
             self.saveButton.heightAnchor.constraint(equalToConstant: 50.0)
         ])
+    }
+    
+    @objc private func tappedSaveButton() {
+        self.delegate?.alertAction()
     }
 }

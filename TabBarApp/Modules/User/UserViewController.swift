@@ -10,5 +10,7 @@ class UserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.screen?.configDelegate(delegate: self)
     }
 }
