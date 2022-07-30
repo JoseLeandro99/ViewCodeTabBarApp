@@ -54,6 +54,5 @@ class RootTabBarController: UITabBarController {
         
         UITabBar.appearance().isTranslucent = true
         UITabBar.appearance().backgroundImage = UIImage()
-        
     }
 }
